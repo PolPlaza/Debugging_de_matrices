@@ -21,12 +21,12 @@ public class Debugging_de_matrices {
             System.out.println();
         }
 
-        // Paso 2: Intentar girar la matriz 90 grados
-        int[][] transposedMatrix = new int[matrix[0].length][matrix.length];
-        
+     // Paso 2: Intentar girar la matriz 90 grados en sentido horario
+        int[][] rotatedMatrix = new int[matrix[0].length][matrix.length];
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                transposedMatrix[i][j] = matrix[j][i]; // Error: El índice i y j están invertidos
+                rotatedMatrix[j][matrix.length - 1 - i] = matrix[i][j];
             }
         }
 
@@ -50,10 +50,10 @@ public class Debugging_de_matrices {
         try {
             int sum = 0;
             // Intento de sumar los elementos de la matriz de forma incorrecta
-            for (int i = 0; i <= matrix.length; i++) {  // Error: índice fuera de límites
-                for (int j = 0; j <= matrix[i].length; j++) {  // Error: índice fuera de límites
-                    sum += matrix[i][j];
-                }
+            for (int i = 0; i < matrix.length; i++) {  // Corregido: índice máximo es matrix.length - 1
+            	for (int j = 0; j < matrix[i].length; j++) {  // Corregido: índice máximo es matrix[i].length - 1
+            	    sum += matrix[i][j];
+            	}
             }
             System.out.println("\nLa suma de los elementos es: " + sum);
         } catch (ArrayIndexOutOfBoundsException e) {
